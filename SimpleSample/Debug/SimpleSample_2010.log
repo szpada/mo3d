@@ -1,0 +1,60 @@
+﻿Build started 2014-03-10 19:57:27.
+     1>Project "C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\SimpleSample_2010.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\SimpleSample.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\DXUT\Core /I..\..\DXUT\Optional /ZI /nologo /W4 /WX- /Od /Oi /Oy- /D WIN32 /D _DEBUG /D DEBUG /D PROFILE /D _WINDOWS /D D3DXFX_LARGEADDRESS_HANDLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /openmp- /Yc"DXUT.h" /Fp"Debug\SimpleSample.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\DXUT\Core\DXUT.cpp  
+         DXUT.cpp
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\DXUT\Core /I..\..\DXUT\Optional /ZI /nologo /W4 /WX- /Od /Oi /Oy- /D WIN32 /D _DEBUG /D DEBUG /D PROFILE /D _WINDOWS /D D3DXFX_LARGEADDRESS_HANDLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /openmp- /Yu"DXUT.h" /Fp"Debug\SimpleSample.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\DXUT\Core\DXUTenum.cpp ..\..\DXUT\Core\DXUTmisc.cpp ..\..\DXUT\Optional\DXUTcamera.cpp ..\..\DXUT\Optional\DXUTgui.cpp ..\..\DXUT\Optional\DXUTres.cpp ..\..\DXUT\Optional\DXUTsettingsdlg.cpp ..\..\DXUT\Optional\SDKmesh.cpp ..\..\DXUT\Optional\SDKmisc.cpp SimpleSample.cpp  
+         DXUTenum.cpp
+         DXUTmisc.cpp
+         DXUTcamera.cpp
+         DXUTgui.cpp
+         DXUTres.cpp
+         DXUTsettingsdlg.cpp
+         SDKmesh.cpp
+         SDKmisc.cpp
+         SimpleSample.cpp
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\SimpleSample.res" SimpleSample.rc 
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\SimpleSample.exe.embed.manifest.res" Debug\SimpleSample_manifest.rc 
+       Link:
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.exe" /INCREMENTAL /NOLOGO d3dx10d.lib d3dx9d.lib dxerr.lib dxguid.lib winmm.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\SimpleSample.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.lib" /MACHINE:X86 Debug\SimpleSample.res
+         Debug\SimpleSample.exe.embed.manifest.res
+         Debug\DXUT.obj
+         Debug\DXUTenum.obj
+         Debug\DXUTmisc.obj
+         Debug\DXUTcamera.obj
+         Debug\DXUTgui.obj
+         Debug\DXUTres.obj
+         Debug\DXUTsettingsdlg.obj
+         Debug\SDKmesh.obj
+         Debug\SDKmisc.obj
+         Debug\SimpleSample.obj  
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\SimpleSample.exe.embed.manifest" /manifest Debug\SimpleSample.exe.intermediate.manifest "d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\SimpleSample.exe.embed.manifest.res" Debug\SimpleSample_manifest.rc 
+       LinkEmbedManifest:
+         d:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.exe" /INCREMENTAL /NOLOGO d3dx10d.lib d3dx9d.lib dxerr.lib dxguid.lib winmm.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\SimpleSample.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.pdb" /SUBSYSTEM:WINDOWS /LARGEADDRESSAWARE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.lib" /MACHINE:X86 Debug\SimpleSample.res
+         Debug\SimpleSample.exe.embed.manifest.res
+         Debug\DXUT.obj
+         Debug\DXUTenum.obj
+         Debug\DXUTmisc.obj
+         Debug\DXUTcamera.obj
+         Debug\DXUTgui.obj
+         Debug\DXUTres.obj
+         Debug\DXUTsettingsdlg.obj
+         Debug\SDKmesh.obj
+         Debug\SDKmisc.obj
+         Debug\SimpleSample.obj  
+         SimpleSample_2010.vcxproj -> C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\Debug\SimpleSample.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\SimpleSample.unsuccessfulbuild".
+         Touching "Debug\SimpleSample.lastbuildstate".
+     1>Done Building Project "C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\C++\Direct3D\SimpleSample\SimpleSample_2010.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.64
