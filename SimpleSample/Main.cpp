@@ -34,6 +34,15 @@ void RenderFrame(void);     // renders a single frame
 void CleanD3D(void);        // closes Direct3D and releases memory
 void InitGraphics(void);    // creates the shape to render
 void InitPipeline(void);    // loads and prepares the shaders
+void AddTriangle(double x, double y, double z);
+
+void CALLBACK OnKeyTouch( UINT nChar, bool bKeyDown, bool bAltDown, void* pUserContext );
+
+bool isVertexBufferSet = false;
+// create the vertex buffer
+D3D11_BUFFER_DESC bd;
+
+int totalVertexes = 0;
 
 // the WindowProc function prototype
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
@@ -56,6 +65,12 @@ int WINAPI WinMain(HINSTANCE hInstance,
     wc.hInstance = hInstance;
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.lpszClassName = L"WindowClass";
+
+	bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
+    bd.ByteWidth = sizeof(VERTEX) * 3;             // size is the VERTEX struct * 3
+    bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
+    bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
+
 
     RegisterClassEx(&wc);
 
@@ -177,6 +192,8 @@ void InitD3D(HWND hWnd)
     viewport.Width = SCREEN_WIDTH;
     viewport.Height = SCREEN_HEIGHT;
 
+	DXUTSetCallbackKeyboard( OnKeyTouch );
+
     devcon->RSSetViewports(1, &viewport);
 
     InitPipeline();
@@ -222,36 +239,48 @@ void CleanD3D(void)
     devcon->Release();
 }
 
+void AddTriangle(double x, double y, double z){
+	// create a triangle using the VERTEX struct
+    VERTEX OurVertices[] =
+    {
+        {x, y + 0.5f, z, D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f)},
+        {x + 0.5f, y - 0.5, z, D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f)},
+        {x -0.5f, y - 0.5f, z, D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f)}
+    };
+
+	if (isVertexBufferSet)
+    {
+		totalVertexes++;
+        D3D11_MAPPED_SUBRESOURCE resource;
+        devcon->Map(pVBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &resource);
+        memcpy(resource.pData, &OurVertices[0], sizeof( VERTEX ) * totalVertexes );
+        devcon->Unmap(pVBuffer, 0);
+    }
+    else
+    {
+        // This is run in the first frame. But what if new vertices are added to the scene?
+        bd.ByteWidth = sizeof(VERTEX) * 3;
+        UINT stride = sizeof(VERTEX);
+        UINT offset = 0;
+
+		totalVertexes = 1;
+
+        D3D11_SUBRESOURCE_DATA resourceData;
+        ZeroMemory(&resourceData, sizeof(resourceData));
+        resourceData.pSysMem = &OurVertices[0];
+
+        dev->CreateBuffer(&bd, &resourceData, &pVBuffer);
+        devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
+        isVertexBufferSet = true;
+    }
+}
 
 // this is the function that creates the shape to render
 void InitGraphics()
 {
-    // create a triangle using the VERTEX struct
-    VERTEX OurVertices[] =
-    {
-        {0.0f, 0.5f, 0.0f, D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f)},
-        {0.45f, -0.5, 0.0f, D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f)},
-        {-0.45f, -0.5f, 0.0f, D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f)}
-    };
+	AddTriangle(0,0,0);
 
-
-    // create the vertex buffer
-    D3D11_BUFFER_DESC bd;
-    ZeroMemory(&bd, sizeof(bd));
-
-    bd.Usage = D3D11_USAGE_DYNAMIC;                // write access access by CPU and GPU
-    bd.ByteWidth = sizeof(VERTEX) * 3;             // size is the VERTEX struct * 3
-    bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
-    bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
-
-    dev->CreateBuffer(&bd, NULL, &pVBuffer);       // create the buffer
-
-
-    // copy the vertices into the buffer
-    D3D11_MAPPED_SUBRESOURCE ms;
-    devcon->Map(pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
-    memcpy(ms.pData, OurVertices, sizeof(OurVertices));                 // copy the data
-    devcon->Unmap(pVBuffer, NULL);                                      // unmap the buffer
+	AddTriangle(0.5,0.5,0);
 }
 
 
@@ -280,4 +309,17 @@ void InitPipeline()
 
     dev->CreateInputLayout(ied, 2, VS->GetBufferPointer(), VS->GetBufferSize(), &pLayout);
     devcon->IASetInputLayout(pLayout);
+}
+
+void CALLBACK OnKeyTouch( UINT nChar, bool bKeyDown, bool bAltDown, void* pUserContext )
+{
+	if( bKeyDown )
+	{
+		switch( nChar )
+		{
+			// show/hide ground
+		case 'G':
+			break;
+		}
+	}
 }
