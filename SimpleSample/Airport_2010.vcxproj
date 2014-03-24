@@ -384,6 +384,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Main.cpp" />
     <None Include="changelog.md" />
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="Airplane.h" />
@@ -411,6 +412,7 @@
     <ClCompile Include="DXUT\Optional\SDKmesh.cpp" />
     <ClCompile Include="DXUT\Optional\SDKmisc.cpp" />
     <None Include="readme.md" />
+    <None Include="shaders.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Airport.cpp" />

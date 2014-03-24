@@ -76,6 +76,9 @@
     </ClCompile>
     <None Include="changelog.md" />
     <None Include="readme.md" />
+    <None Include="shaders.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Airport.cpp" />
@@ -83,6 +86,7 @@
     <ClCompile Include="Airplane.cpp">
       <Filter>Airplane Source</Filter>
     </ClCompile>
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Airport.fx">
