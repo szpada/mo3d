@@ -384,7 +384,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp" />
     <None Include="changelog.md" />
     <None Include="DXUT\Optional\directx.ico" />
     <ClInclude Include="Airplane.h" />

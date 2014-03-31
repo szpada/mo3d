@@ -48,7 +48,6 @@ int totalVertexes = 0;
 // the WindowProc function prototype
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
-
 // the entry point for any Windows program
 int WINAPI WinMain(HINSTANCE hInstance,
                    HINSTANCE hPrevInstance,
@@ -241,6 +240,7 @@ void CleanD3D(void)
 }
 
 void AddTriangle(double x, double y, double z){
+	/*
 	// create a triangle using the VERTEX struct
     VERTEX OurVertices[] =
     {
@@ -274,6 +274,7 @@ void AddTriangle(double x, double y, double z){
         devcon->IASetVertexBuffers(0, 1, &pVBuffer, &stride, &offset);
         isVertexBufferSet = true;
     }
+	*/
 }
 
 // this is the function that creates the shape to render
@@ -281,7 +282,7 @@ void InitGraphics()
 {
 	AddTriangle(0,0,0);
 
-	AddTriangle(0.5,0.5,0);
+	//AddTriangle(0.5,0.5,0);
 }
 
 

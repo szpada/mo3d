@@ -60,15 +60,18 @@ struct MESHLISTDATA
 
 g_BuildingMeshListData[] =
 {
-	{ L"Hangar", L"Media\\Building\\Hangar\\model.x", 0 },
+	{ L"Hangar", L"Media\\Ground\\torus.x", 0 },
+	//{ L"Hangar", L"Media\\Building\\Hangar\\model.x", 0 },
 	{ L"Tower", L"Media\\Building\\Tower\\model.x", 0 },
 	{ L"Terminal", L"Media\\Building\\Terminal\\model.x", 0 }
 };
 
 MESHLISTDATA g_AirplaneMeshListData[] =
 {
-	{ L"AN26 DHL", L"Media\\Airplane\\AN26_DHL\\model.x", 0 },
-	{ L"AN26 EXIN", L"Media\\Airplane\\AN26_EXIN\\model.x", 0 },
+	//{ L"AN26 DHL", L"Media\\Airplane\\AN26_DHL\\model.x", 0 },
+	//{ L"AN26 EXIN", L"Media\\Airplane\\AN26_EXIN\\model.x", 0 },
+	{ L"AN26 DHL", L"Media\\Ground\\torus.x", 0 },
+	{ L"AN26 EXIN", L"Media\\Ground\\torus.x", 0 },
 	
 };
 
@@ -82,8 +85,10 @@ MESHLISTDATA g_VehicleMeshListData[] =
 
 MESHLISTDATA g_MovingMeshListData[] =
 {
-	{ L"B735", L"Media\\Airplane\\B737\\model.x", 0 },
-	{ L"B735_2", L"Media\\Airplane\\B737\\model2.x", 0 },
+	//{ L"B735", L"Media\\Airplane\\B737\\model.x", 0 },
+	//{ L"B735_2", L"Media\\Airplane\\B737\\model2.x", 0 },
+	{ L"B735", L"Media\\Ground\\torus.x", 0 },
+	{ L"B735_2", L"Media\\Ground\\torus.x", 0 },
 };
 
 //----------------------------------------------------------------------------

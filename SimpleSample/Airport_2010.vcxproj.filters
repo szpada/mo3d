@@ -86,7 +86,6 @@
     <ClCompile Include="Airplane.cpp">
       <Filter>Airplane Source</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Airport.fx">
