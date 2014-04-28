@@ -57,13 +57,15 @@ struct MESHLISTDATA
 	WCHAR   wszFile[MAX_PATH];
 	DWORD dwNumMat;  // Number of materials.  To be filled in when loading this mesh.
 } 
-
+// umieszczajac obiekt w tej sekcji, jest on sttyczny(?), i umieszczony przed terminalem, na poziomie ziemi. 
+//Sprawdzone na przyk³adzie modelu B735; dla torusa, nie widaæ, brak struktury.
 g_BuildingMeshListData[] =
 {
-	{ L"Hangar", L"Media\\Ground\\torus.x", 0 },
-	//{ L"Hangar", L"Media\\Building\\Hangar\\model.x", 0 },
+	//{ L"Hangar", L"Media\\Ground\\torus.x", 0 },
+	{ L"Hangar", L"Media\\Building\\Hangar\\model.x", 0 },
 	{ L"Tower", L"Media\\Building\\Tower\\model.x", 0 },
-	{ L"Terminal", L"Media\\Building\\Terminal\\model.x", 0 }
+	//{ L"Terminal", L"Media\\Building\\Terminal\\model.x", 0 },  
+	{ L"Cokolwiek", L"Media\\Airplane\\B737\\model1.x", 100000 },
 };
 
 MESHLISTDATA g_AirplaneMeshListData[] =
@@ -85,10 +87,10 @@ MESHLISTDATA g_VehicleMeshListData[] =
 
 MESHLISTDATA g_MovingMeshListData[] =
 {
-	//{ L"B735", L"Media\\Airplane\\B737\\model.x", 0 },
-	//{ L"B735_2", L"Media\\Airplane\\B737\\model2.x", 0 },
-	{ L"B735", L"Media\\Ground\\torus.x", 0 },
-	{ L"B735_2", L"Media\\Ground\\torus.x", 0 },
+	{ L"B735", L"Media\\Airplane\\B737\\model.x", 0 },
+	{ L"B735_2", L"Media\\Airplane\\B737\\model2.x", 0 },
+	//{ L"B735", L"Media\\Vegetation\\model1.x", 1000000},
+	//{ L"B735_2", L"Media\\Vegetation\\model2.x", 1000000 },
 };
 
 //----------------------------------------------------------------------------
