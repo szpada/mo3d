@@ -61,59 +61,11 @@ struct MESHLISTDATA
 //Sprawdzone na przyk³adzie modelu B735; dla torusa, nie widaæ, brak struktury.
 g_BuildingMeshListData[] =
 {
-	//{ L"Hangar", L"Media\\Ground\\torus.x", 0 },
-	{ L"Hangar", L"Media\\Building\\Hangar\\model.x", 0 },
-	{ L"Tower", L"Media\\Building\\Tower\\model.x", 0 },
+	{ L"Hangar", L"Media\\Building\\Hangar\\cube.x", 0 }
+	//{ L"Hangar", L"Media\\Building\\Test\\Patrick.x", 0 },
+	//{ L"Tower", L"Media\\Building\\Tower\\model.x", 0 },
 	//{ L"Terminal", L"Media\\Building\\Terminal\\model.x", 0 },  
-	{ L"Cokolwiek", L"Media\\Airplane\\B737\\model1.x", 100000 },
-};
-
-MESHLISTDATA g_AirplaneMeshListData[] =
-{
-	//{ L"AN26 DHL", L"Media\\Airplane\\AN26_DHL\\model.x", 0 },
-	//{ L"AN26 EXIN", L"Media\\Airplane\\AN26_EXIN\\model.x", 0 },
-	{ L"AN26 DHL", L"Media\\Ground\\torus.x", 0 },
-	{ L"AN26 EXIN", L"Media\\Ground\\torus.x", 0 },
-	
-};
-
-MESHLISTDATA g_VehicleMeshListData[] =
-{
-	{ L"Car 001 white", L"Media\\Vehicle\\Car001\\model_white.x", 0 },
-	{ L"Car 001 red", L"Media\\Vehicle\\Car001\\model_red.x", 0 },
-	{ L"Car 001 black", L"Media\\Vehicle\\Car001\\model_black.x", 0 },
-	{ L"Car 001 gray", L"Media\\Vehicle\\Car001\\model_gray.x", 0 },
-};
-
-MESHLISTDATA g_MovingMeshListData[] =
-{
-	{ L"B735", L"Media\\Airplane\\B737\\model.x", 0 },
-	{ L"B735_2", L"Media\\Airplane\\B737\\model2.x", 0 },
-	//{ L"B735", L"Media\\Vegetation\\model1.x", 1000000},
-	//{ L"B735_2", L"Media\\Vegetation\\model2.x", 1000000 },
-};
-
-//----------------------------------------------------------------------------
-/*************** PORUSZAJACE SIE POJAZDY - POCZATEK ***********************/
-//----------------------------------------------------------------------------
-MESHLISTDATA g_MovingBagCartMeshListData[] =
-{
-	{ L"Bag Cart", L"Media\\Vehicle\\BagCart\\bag_cart_changed.x", 0 },	
-};
-
-MESHLISTDATA g_MovingFireTruckMeshListData[] =
-{
-	{ L"Fire Truck", L"Media\\Vehicle\\FireTruck\\fire_truck.x", 0 },	
-};
-//----------------------------------------------------------------------------
-/*************** PORUSZAJACE SIE POJAZDY - KONIEC ***********************/
-//----------------------------------------------------------------------------
-
-
-MESHLISTDATA g_VegetationMeshListData[] =
-{
-	{ L"Trees", L"Media\\Vegetation\\model1.x", 0 },
-	{ L"Trees", L"Media\\Vegetation\\model2.x", 0 }
+	//{ L"Cokolwiek", L"Media\\Airplane\\B737\\model1.x", 100000 },
 };
 
 //--------------------------------------------------------------------------------------
@@ -565,63 +517,6 @@ HRESULT CALLBACK OnD3D9CreateDevice( IDirect3DDevice9* pd3dDevice, const D3DSURF
 		NewMesh->Create(g_BuildingMeshListData[i].wszFile, pd3dDevice);
 		g_BuildingMeshes.Add(NewMesh);
 	}
-
-	//Samoloty
-	for( int i = 0; i < sizeof( g_AirplaneMeshListData ) / sizeof( MESHLISTDATA ); ++i )
-	{
-		CMesh* NewMesh = new CMesh();
-		NewMesh->Create(g_AirplaneMeshListData[i].wszFile, pd3dDevice);
-		g_AirplaneMeshes.Add(NewMesh);
-	}
-
-	//Latajacy Samolot
-	for( int i = 0; i < sizeof( g_MovingMeshListData ) / sizeof( MESHLISTDATA ); ++i )
-	{
-		CMesh* NewMesh = new CMesh();
-		NewMesh->Create(g_MovingMeshListData[i].wszFile, pd3dDevice);
-		g_MovingMeshes.Add(NewMesh);
-	}
-
-
-	//----------------------------------------------------------------------------
-	/*************** PORUSZAJACE SIE POJAZDY - POCZATEK ***********************/
-	//----------------------------------------------------------------------------
-	//Poruszajacy sie wozek bagazowy
-	for( int i = 0; i < sizeof( g_MovingBagCartMeshListData ) / sizeof( MESHLISTDATA ); ++i )
-	{
-		CMesh* NewMesh = new CMesh();
-		NewMesh->Create(g_MovingBagCartMeshListData[i].wszFile, pd3dDevice);
-		g_MovingBagCartMeshes.Add(NewMesh);
-	}
-
-	//Poruszajacy sie woz strazacki
-	for( int i = 0; i < sizeof( g_MovingFireTruckMeshListData ) / sizeof( MESHLISTDATA ); ++i )
-	{
-		CMesh* NewMesh = new CMesh();
-		NewMesh->Create(g_MovingFireTruckMeshListData[i].wszFile, pd3dDevice);
-		g_MovingFireTruckMeshes.Add(NewMesh);
-	}
-	//----------------------------------------------------------------------------
-	/*************** PORUSZAJACE SIE POJAZDY - KONIEC ***********************/
-	//----------------------------------------------------------------------------
-
-
-	// Pojazdy
-	for( int i = 0; i < sizeof( g_VehicleMeshListData ) / sizeof( MESHLISTDATA ); ++i )
-	{
-		CMesh* NewMesh = new CMesh();
-		NewMesh->Create(g_VehicleMeshListData[i].wszFile, pd3dDevice);
-		g_VehicleMeshes.Add(NewMesh);
-	}
-
-	//Roslinnoœæ
-	for( int i = 0; i < sizeof( g_VegetationMeshListData ) / sizeof( MESHLISTDATA ); ++i )
-	{
-		CMesh* NewMesh = new CMesh();
-		NewMesh->Create(g_VegetationMeshListData[i].wszFile, pd3dDevice);
-		g_VegetationMeshes.Add(NewMesh);
-	}
-
 	return S_OK;
 }
 
@@ -802,26 +697,6 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 
 		//D3DXMatrixRotationY( &mWorldViewProjection, timeGetTime() / 4000.0f );
 
-		/*
-		//// TODO: Zmodyfikowaæ œwiat³a na scenie
-		D3DLIGHT9 light;
-		D3DXVECTOR3 vecLightDirUnnormalized( 0.0f, -1.0f, 1.0f );
-		ZeroMemory( &light, sizeof( D3DLIGHT9 ) );
-		light.Type = D3DLIGHT_DIRECTIONAL;
-		light.Diffuse.r = 1.0f;
-		light.Diffuse.g = 1.0f;
-		light.Diffuse.b = 1.0f;
-		D3DXVec3Normalize( ( D3DXVECTOR3* )&light.Direction, &vecLightDirUnnormalized );
-		//light.Position.x = 1.0f;
-		//light.Position.y = -1.0f;
-		//light.Position.z = 1.0f;
-		//light.Range = 1.0f;
-		V( pd3dDevice->SetLight( 0, &light ) );
-		V( pd3dDevice->LightEnable( 0, TRUE ) );
-		////
-		*/
-
-
 		// Start light
 
 		// Fill in a light structure defining our light
@@ -882,257 +757,26 @@ void CALLBACK OnD3D9FrameRender( IDirect3DDevice9* pd3dDevice, double fTime, flo
 
 		////
 
-		// renderowanie terenu
-		c_mesh_terrain->Render(pd3dDevice,mWorldViewProjection);
+		///////////////////////////////////////////
+		//RENDEROWANIE CUBEOW!!!!!!!!!!!!!!!!!!!!!!
+		///////////////////////////////////////////
 
-		// warunkowe renderowanie pasa startowego
-		if(g_bShowGround){
-			c_mesh_ground->Render(pd3dDevice,mWorldViewProjection);
-		}
+		D3DXMATRIXA16 matScale;
+		D3DXMatrixScaling( &matScale, 2.0f, 2.0f, 2.0f );
 
-		// renderowanie budynków
 		for( int i = 0; i < g_BuildingMeshes.GetSize(); ++i )
 		{
-			g_BuildingMeshes[i]->Render(pd3dDevice,mWorldViewProjection);
-		}
 
-		// renderowanie samolotów
-		for( int i = 0; i < g_AirplaneMeshes.GetSize(); ++i )
-		{
-			g_AirplaneMeshes[i]->Render(pd3dDevice,mWorldViewProjection);
-		}
-
-		//renderowanie latajacego samolotu
-		switch(g_iAirplaneMode)
-		{
-			case AIRPLANE_RING:
-			{
-				airplane.setWorldRing(fTime, &mWorld, &mWorld2);
-				mWorldViewProjection = mWorld2 * mView * mProj;
-
-				g_MovingMeshes[0]->Render(pd3dDevice, mWorldViewProjection);
-
-				mWorldViewProjection = mWorld * mView * mProj;
-				
-				break;
-			}
-
-			case AIRPLANE_APPROACH:
-			{
-				airplane.setWorldApproach(fTime, &mWorld, &mWorld2);
-				mWorldViewProjection = mWorld2 * mView * mProj;
-
-				g_MovingMeshes[1]->Render(pd3dDevice, mWorldViewProjection);
-
-				mWorldViewProjection = mWorld * mView * mProj;
-
-				break;
-			}
-		}
-
-		//----------------------------------------------------------------------------
-		/*************** PORUSZAJACE SIE POJAZDY - POCZATEK ***********************/
-		//----------------------------------------------------------------------------
-		// renderowanie poruszajacego sie wozka bagazowego
-		for( int i = 0; i < g_MovingBagCartMeshes.GetSize(); ++i )
-		{
-			D3DXMATRIXA16 mTranslation;
-			D3DXMATRIXA16 mRotationY;
-
-			D3DXMatrixScaling(&mWorld2, 0.001, 0.001, 0.001);
-
-			if (bc_road_part == 1)
-			{
-				bc_z_coordinate = -190.0f + bc_counter*0.2f;
-				D3DXMatrixRotationY( &mRotationY, Y_ROTATION_90 );
-				if (bc_z_coordinate >= -90)
-				{
-					bc_counter = 0.0f;
-					bc_road_part = 2;
-					bc_z_coordinate = bc_x_coordinate;
-					bc_x_coordinate = 90.0f;
-				}
-			}
-			if (bc_road_part == 2)
-			{
-				bc_z_coordinate = -30.0f + bc_counter*0.2f;
-				D3DXMatrixRotationY( &mRotationY, Y_ROTATION_180 );
-				if (bc_z_coordinate >= 20)
-				{
-					bc_counter = 0.0f;
-					bc_z_coordinate = bc_x_coordinate;
-					bc_x_coordinate = -20.0f;
-					bc_road_part = 3;
-				}
-			}
-			if(bc_road_part == 3)
-			{
-				if (bc_stop_counter > 200)
-				{
-					bc_z_coordinate = 90.0f + bc_counter*0.2f;
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_270 );
-					if (bc_z_coordinate >= 190.0f)
-					{
-						bc_stop_counter = 0;
-						bc_counter = 0.0f;
-						bc_road_part = 4;
-						bc_z_coordinate = bc_x_coordinate;
-						bc_x_coordinate = -190.0f;
-					}
-				}
-				else
-				{
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_270 );
-					bc_stop_counter += 1;
-					bc_counter = 0.0f;
-				}
-			}
-			if(bc_road_part == 4)
-			{
-
-				if (bc_stop_counter > 200)
-				{
-					bc_z_coordinate = -20.0f + bc_counter*0.2f;
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_0 );
-					if (bc_z_coordinate >= 30.0f)
-					{
-						bc_stop_counter = 0;
-						bc_counter = 0.0f;
-						bc_road_part = 1;
-						bc_z_coordinate = bc_x_coordinate;
-						bc_x_coordinate = -30.0f;
-					}
-				}
-				else
-				{
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_0 );
-					bc_stop_counter += 1;
-					bc_counter = 0.0f;
-				}
-			}
-			bc_counter += 1.0f;
-			D3DXMatrixTranslation(&mTranslation, bc_x_coordinate, y_coordinate, bc_z_coordinate);
-			mWorld2 = mTranslation*mRotationY*mWorld2*mWorld;
-			mWorldViewProjection = mWorld2 * mView * mProj;
-			g_MovingBagCartMeshes[i]->Render(pd3dDevice,mWorldViewProjection);
-			mWorldViewProjection = mWorld * mView * mProj;
-		}
-
-		// renderowanie poruszajacego sie wozu strazackiego
-		for( int i = 0; i < g_MovingFireTruckMeshes.GetSize(); ++i )
-		{
-			D3DXMATRIXA16 mTranslation;
 			D3DXMATRIXA16 mWorld2;
-			D3DXMATRIXA16 mRotationY;
-
-			D3DXMatrixScaling(&mWorld2, 0.001, 0.001, 0.001);
-
-			if (ft_road_part == 1)
-			{
-				if (ft_stop_counter > 400)
-				{
-					ft_z_coordinate = -20.0f + ft_counter*0.2f;
-					if (ft_z_coordinate >= 20)
-					{
-						ft_stop_counter = 0;
-						ft_counter = 0.0f;
-						ft_road_part = 2;
-						ft_z_coordinate = 0.0f;
-						ft_x_coordinate = -20.0f;
-					}
-				}
-				else
-				{
-					ft_stop_counter += 1;
-					ft_counter = 0.0f;
-				}
-			}
-			if (ft_road_part == 2)
-			{
-				ft_z_coordinate = ft_counter*0.2f;
-				D3DXMatrixRotationY( &mRotationY, Y_ROTATION_90 );
-				if (ft_z_coordinate >= 440)
-				{
-					ft_counter = 0.0f;
-					ft_z_coordinate = -440.0f;
-					ft_x_coordinate = 20.0f;
-					ft_road_part = 3;
-				}
-			}
-			if(ft_road_part == 3)
-			{
-				if (ft_stop_counter > 400)
-				{
-					ft_z_coordinate = -440.0f + ft_counter*0.2f;
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_270 ); 
-					if (ft_z_coordinate >= 0.0f)
-					{
-						ft_stop_counter = 0;
-						ft_counter = 0.0f;
-						ft_road_part = 4;
-						ft_z_coordinate = -20.0f;
-						ft_x_coordinate = 0.0f;
-					}
-				}
-				else
-				{
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_270 );
-					ft_stop_counter += 1;
-					ft_counter = 0.0f;
-				}
-			}
-			if(ft_road_part == 4)
-			{
-					ft_z_coordinate = -20.0f + ft_counter*0.2f;
-					D3DXMatrixRotationY( &mRotationY, Y_ROTATION_180 );
-					if (ft_z_coordinate >= 20.0f)
-					{
-						ft_stop_counter = 0;
-						ft_counter = 0.0f;
-						ft_road_part = 1;
-						ft_z_coordinate = -20.0f;
-						ft_x_coordinate = 0.0f;
-					}
-			}
-
-			D3DXMatrixTranslation(&mTranslation, ft_x_coordinate, y_coordinate, ft_z_coordinate);
-
-			if (ft_road_part == 1)
-				mWorld2 = mTranslation*mWorld2*mWorld;
-			else
-				mWorld2 = mTranslation*mRotationY*mWorld2*mWorld;
+			D3DXMatrixScaling(&mWorld2, 0.01, 0.01, 0.01);
+			mWorld2 = mWorld2*mWorld;
 			mWorldViewProjection = mWorld2 * mView * mProj;
-			g_MovingFireTruckMeshes[i]->Render(pd3dDevice, mWorldViewProjection);
+			g_BuildingMeshes[i]->Render(pd3dDevice,mWorldViewProjection);
 			mWorldViewProjection = mWorld * mView * mProj;
-			ft_counter += 1.0f;
+
+			//pd3dDevice->SetTransform(D3DTS_WORLD, &matScale);
+			//g_BuildingMeshes[i]->Render(pd3dDevice, mWorldViewProjection);
 		}
-		//----------------------------------------------------------------------------
-		/*************** PORUSZAJACE SIE POJAZDY - KONIEC ***********************/
-		//----------------------------------------------------------------------------
-
-
-
-		// renderowanie pojazdów
-		if(g_bShowVehicle){
-			for( int i = 0; i < g_VehicleMeshes.GetSize(); ++i )
-			{
-				g_VehicleMeshes[i]->Render(pd3dDevice,mWorldViewProjection);
-			}
-		}
-
-		// renderowanie roœlinnoœci
-		if(g_bShowVegetation){
-			for( int i = 0; i < g_VegetationMeshes.GetSize(); ++i )
-			{
-				D3DXMATRIXA16 mWorld2;
-				D3DXMatrixScaling(&mWorld2, 0.001, 0.001, 0.001);
-				mWorld2 = mWorld2*mWorld;
-				mWorldViewProjection = mWorld2 * mView * mProj;
-				g_VegetationMeshes[i]->Render(pd3dDevice,mWorldViewProjection);
-				mWorldViewProjection = mWorld * mView * mProj;
-			}
-		}
-		////
 
 		//renderowanie mg³y
 		SetupVertexFog(pd3dDevice, 0x00999999, D3DFOG_EXP);
